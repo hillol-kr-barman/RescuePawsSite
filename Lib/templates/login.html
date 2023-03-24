@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %} Login Demo {% endblock %}
+
+{% block content %}
+<div id="sign_up_nav">
+<h1 style="text-align : center">
+    Login Form
+</h1>
+    <p style="text-align:center">
+        {% if message %}
+        {{message}}
+        {% endif %}
+    </p>
+
+</div>
+{% if form %}
+<p style="text-align:center">New Here? Consider <a href="{{url_for('sign_up')}}">Signing Up!</a></p>
+<form id="login_form" action="{{url_for('login')}}" method="POST">
+    {{ form.email.label }}:<br>
+    {{ form.email }} <br>
+    <!-- Error handling for email -->
+    {% if form.email.errors %}
+    <br>
+        {% for error in form.email.errors %}
+            <ul>
+                <li> {{ error }} </li>
+            </ul>
+        {% endfor %}
+    <br>
+    {% endif %}
+
+    {{ form.password.label }}: <br>
+    {{ form.password }} <br> <br>
+    <!-- Error handling for Password -->
+    {% if form.password.error %}
+    <br>
+        {% for error in form.password.errors %}
+            <ul>
+                <li> {{error}} </li>
+            </ul>
+        {% endfor %}
+    <br>
+    {% endif %}
+
+
+
+    {{ form.csrf_token }}
+    {{ form.submit }} <br> <br>
+
+</form>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,88 @@
+#title{
+    padding: 20px;
+    color: rgb(254, 0, 0);
+}
+
+#header{
+    padding: 40px;
+    background: #4b0505;
+    color: white;
+    font-size: 20px;
+    text-align: left;
+}
+
+#nav_menu{
+    padding: 30px;
+    color: white;
+    font-size: 20px;
+    text-align: right;
+}
+
+#footer{
+    background: #d68d47;
+    color: #895151;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 5px;
+}
+
+
+body{
+    background: sandybrown;
+}
+
+td, th{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 20px;
+}
+
+table{
+    align-items: center;
+    text-align: center;
+    align-content: center;
+}
+
+#petImageHome{
+    height : 100px;
+    width : 100px;
+    object-fit: cover;
+}
+
+#petImageDetail{
+    height : 300px;
+    width : 300px;
+    margin : 100px;
+    object-fit: cover;
+}
+
+.petDetailDes{
+    padding-left: 100px;
+    padding-top: 100px;
+
+}
+
+#login_form{
+    padding : 100px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  color : red;
+}
+
+sign_up_nav{
+    margin : 100px;
+}
+
+#delete_pet{
+    color : red;
+}

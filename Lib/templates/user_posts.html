@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block title %} My Pets {% endblock %}
+
+
+{% block content %}
+
+<a href="{{url_for('insert_pet')}}"><button style="background-color:green">Add New Pet</button></a>
+
+<h3 style="text-align:center">Pets Posted by {{user.name}}</h3>
+
+<table>
+
+    <tr>
+        <th>Image</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Bio</th>
+    </tr>
+
+    {% for pet in pets %}
+
+    <tr>
+
+        <td> <!-- Pet image Hyperlinked to details page-->
+            <a href="{{url_for('pet_details', pet_id = pet.id)}}">
+            <img id="petImageHome" src="{{url_for('static' , filename = pet.id|string +'.jpg')}}">
+        </a>
+        </td>
+
+        <td>{{pet.id}}</td>
+        <td>{{pet.name}}</td>
+        <td>{{pet.age}}</td>
+        <td>{{pet.bio}}</td>
+
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}

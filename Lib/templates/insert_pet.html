@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %} Record New Pet {% endblock %}
+
+{% block content %}
+    <div class="petDetailDes" style="float:left; margin:10px;">
+
+        {% if form %}
+        <form action="{{url_for('insert_pet')}}" method="POST">
+            {{ form.name.label }}:<br>
+            {{ form.name }} <br>
+            {{ form.age.label }}:<br>
+            {{ form.age }} <br>
+            {{ form.bio.label }}:<br>
+            {{ form.bio }} <br><br>
+            {{ form.csrf_token }}
+            {{ form.new_pet }} <br> <br>
+        </form>
+        {% endif %}
+        <p style="text-align:center">
+        {% if message %}
+        {{message}}
+        {% endif %}
+        </p>
+
+
+    </div>
+{% endblock %}

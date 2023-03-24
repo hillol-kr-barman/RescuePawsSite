@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %} {{pet.name}}'s Details {% endblock %}
+
+{% block content %}
+<div style="float:left; border-style:double;">
+        <img id="petImageDetail" src= "{{url_for('static', filename = pet.id|string+'.jpg')}}">
+        <a href="{{url_for('delete_pet', pet_id=pet.id)}}"><button style="background-color:red" >Delete Pet</button></a>
+    </div>
+    <div class="petDetailDes" style="float:left; margin:10px;">
+        <h1 class="title">{{pet.name}}</h1>
+        <p><b>Age: &nbsp;</b> {{pet.age}}</p>
+        <p><b>Bio: &nbsp;</b> {{pet.bio}}</p>
+        <hr>
+        <h2>Edit Pet</h2>
+        {% if form %}
+        <form action="{{url_for('pet_details', pet_id = pet.id)}}" method="POST">
+            {{ form.name.label }}:<br>
+            {{ form.name(value = pet.name) }} <br>
+            {{ form.age.label }}:<br>
+            {{ form.age(value = pet.age) }} <br>
+            {{ form.bio.label }}:<br>
+            {{ form.bio(value = pet.bio) }} <br><br>
+            {{ form.csrf_token }}
+            {{ form.edit_pet }} <br> <br>
+        </form>
+
+        <p style="text-align:center">
+        {% if message %}
+        {{message}}
+        {% endif %}
+        </p>
+        {% endif %}
+
+    </div>
+{% endblock %}
+

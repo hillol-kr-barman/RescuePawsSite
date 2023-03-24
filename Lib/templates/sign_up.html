@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %} Sign Up Form {% endblock %}
+
+{% block content %}
+<div id="sign_up_nav">
+<h1 style="text-align : center">
+    Sign Up Form
+</h1>
+    <p style="text-align:center">
+        {% if message %}
+        {{message}}
+        {% endif %}
+    </p>
+</div>
+{% if form %}
+<form id="login_form" action="{{url_for('sign_up')}}" method="POST">
+
+    <!--Name Field-->
+    {{ form.name.label }} <br>
+    {{ form.name}}<br>
+    <!--Blank Name Error Handling-->
+    {% if form.name.error %}
+    <br>
+        {% for error in form.name.errors %}
+            <ul>
+                <li> {{error}} </li>
+            </ul>
+        {% endfor %}
+    <br>
+    {% endif %}
+    <!--Email Field-->
+    {{ form.email.label }}:<br>
+    {{ form.email }} <br>
+    <!-- Error handling for email -->
+    {% if form.email.errors %}
+    <br>
+    {% for error in form.email.errors %}
+    <ul>
+        <li> {{ error }} </li>
+    </ul>
+    {% endfor %}
+    <br>
+    {% endif %}
+    <!--Password Field-->
+    {{ form.password.label }}: <br>
+    {{ form.password }} <br>
+    <!-- Error handling for Password -->
+    {% if form.password.error %}
+    <br>
+        {% for error in form.password.errors %}
+            <ul>
+                <li> {{error}} </li>
+            </ul>
+        {% endfor %}
+    <br>
+    {% endif %}
+    <!--Confirm Password Field-->
+    {{ form.conf_password.label }}: <br>
+    {{ form.conf_password }} <br>
+    <!--Password Mismatch Error Handling-->
+    {% if form.conf_password.errors %}
+    <br>
+        {% for error in form.conf_password.errors %}
+            <ul>
+                <li> {{error}} </li>
+            </ul>
+        {% endfor %}
+    <br>
+    {% endif %}
+
+    <!--Hidden CSRF Token-->
+    {{ form.csrf_token }}
+    <!--Submit Field-->
+    {{ form.submit }} <br> <br>
+
+</form>
+
+{% endif %}
+{% endblock %}
